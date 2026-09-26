@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusVibe | Welcome</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #160b35, #5c2db8, #a855f7);
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+    }
+
+    .welcome-card {
+        width: 90%;
+        max-width: 600px;
+        padding: 50px 30px;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: white;
+        color: #6d28d9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 55px;
+        font-weight: bold;
+        margin: 0 auto 25px;
+    }
+
+    h1 {
+        font-size: 42px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 17px;
+        color: #eee5ff;
+        margin-bottom: 30px;
+    }
+
+    .start-btn {
+        display: inline-block;
+        padding: 14px 40px;
+        border-radius: 30px;
+        background: #6C4CEB;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .start-btn:hover {
+        background: #5738D4;
+        transform: translateY(-3px);
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="welcome-card">
+
+        <div class="logo">C</div>
+
+        <h1>CampusVibe</h1>
+
+        <p>
+            Discover campus events, connect with students,
+            and make unforgettable memories.
+        </p>
+
+        <a href="{{ url_for('login') }}" class="start-btn">
+            Get Started →
+        </a>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusVibe | College Events</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #6c4cf1;
+            --primary-dark: #5133cf;
+            --secondary: #ff7a59;
+            --dark: #17152d;
+            --muted: #77758c;
+            --light: #f7f6fc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        
+        .navbar {
+            background: #fff;
+            padding: 17px 0;
+            box-shadow: 0 3px 25px rgba(40, 30, 90, 0.05);
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: 800;
+            color: var(--primary) !important;
+            letter-spacing: -1px;
+        }
+
+        .brand-icon {
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            padding: 8px 11px;
+            margin-right: 8px;
+        }
+
+        .nav-link {
+            color: #55536b;
+            font-weight: 500;
+            margin: 0 8px;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .btn-main {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 23px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            background: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-main {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            padding: 10px 22px;
+            font-weight: 600;
+        }
+
+        .btn-outline-main:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        
+
+        .hero {
+            background: linear-gradient(120deg, #f0edff, #fff4ef);
+            padding: 85px 0 75px;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #e5dfff;
+            color: var(--primary);
+            border-radius: 30px;
+            padding: 9px 17px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+            max-width: 500px;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 370px;
+            object-fit: cover;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(67, 45, 140, 0.16);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 35px;
+            margin-top: 35px;
+        }
+
+        .hero-stats h4 {
+            font-size: 25px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .hero-stats small {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+       
+
+        .section-padding {
+            padding: 75px 0;
+        }
+
+        .section-heading {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+       
+
+        .search-box {
+            background: white;
+            border: 1px solid #e9e5f5;
+            border-radius: 14px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(40, 30, 90, 0.04);
+        }
+
+        .search-box i {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            background: transparent;
+        }
+
+        
+        .filter-btn {
+            border: 1px solid #e9e5f5;
+            background: white;
+            color: #68657b;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        
+
+        .event-card {
+            background: white;
+            border: 1px solid #eeeaf7;
+            border-radius: 18px;
+            overflow: hidden;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(40, 30, 90, 0.11);
+        }
+
+        .event-image-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-img {
+            width: 100%;
+            height: 215px;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .event-card:hover .event-img {
+            transform: scale(1.05);
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: white;
+            color: var(--primary);
+            border-radius: 8px;
+            padding: 7px 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .event-body {
+            padding: 22px;
+        }
+
+        .event-date {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .event-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .event-description {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+            min-height: 44px;
+        }
+
+        .event-info {
+            color: #77758c;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .event-info i {
+            color: var(--primary);
+            margin-right: 7px;
+        }
+
+        .event-footer {
+            border-top: 1px solid #f0edf7;
+            padding-top: 17px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .seats {
+            color: #5b9876;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .register-btn {
+            background: #eeeaff;
+            color: var(--primary);
+            border: none;
+            border-radius: 9px;
+            padding: 10px 15px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .register-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+
+        .benefit-section {
+            background: var(--light);
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 17px;
+            padding: 30px 25px;
+            height: 100%;
+            border: 1px solid #eeeaf7;
+            transition: 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h5 {
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .benefit-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        
+
+        .cta-box {
+            background: linear-gradient(120deg, #6c4cf1, #8e69f5);
+            border-radius: 25px;
+            padding: 55px 35px;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .cta-box p {
+            color: #e8e0ff;
+            font-size: 14px;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 10px;
+            padding: 13px 25px;
+            font-weight: 700;
+        }
+
+        .btn-white:hover {
+            background: #f0edff;
+            color: var(--primary-dark);
+        }
+
+        
+
+        footer {
+            background: #17152d;
+            color: white;
+            padding: 45px 0 25px;
+        }
+
+        footer p {
+            color: #aaa7c0;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .footer-link {
+            color: #aaa7c0;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        
+
+        .modal-content {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(120deg, #6c4cf1, #8e69f5);
+            color: white;
+            padding: 25px;
+            border: none;
+        }
+
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .modal-body {
+            padding: 28px;
+        }
+
+        .form-label {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 13px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 76, 241, 0.12);
+        }
+
+        
+        @media (max-width: 991px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero-img {
+                height: 300px;
+                margin-top: 35px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-padding {
+                padding: 55px 0;
+            }
+
+            .section-heading {
+                font-size: 27px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-stats {
+                gap: 22px;
+            }
+
+            .hero-stats h4 {
+                font-size: 21px;
+            }
+
+            .hero-img {
+                height: 230px;
+            }
+
+            .cta-box {
+                padding: 40px 20px;
+            }
+        }
+
+
+
+         
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+
+.event-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card .card-body {
+    flex: 1;
+}
+
+
+@media (max-width: 991px) {
+    .navbar {
+        padding: 12px 0;
+    }
+
+    .hero {
+        padding: 55px 0;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 21px;
+    }
+
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+        line-height: 1.3;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .section-padding {
+        padding: 45px 0;
+    }
+
+    .section-heading {
+        font-size: 25px;
+    }
+
+    .event-card {
+        margin-bottom: 15px;
+    }
+
+    .btn-main,
+    .btn-outline-main {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    .modal-dialog {
+        margin: 10px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .cta-box {
+        padding: 30px 18px;
+    }
+
+    footer {
+        padding: 35px 0 20px;
+    }
+}
+    </style>
+</head>
+
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusVibe | College Events</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #6c4cf1;
+            --primary-dark: #5133cf;
+            --secondary: #ff7a59;
+            --dark: #17152d;
+            --muted: #77758c;
+            --light: #f7f6fc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #fff;
+            padding: 17px 0;
+            box-shadow: 0 3px 25px rgba(40, 30, 90, 0.05);
+        }
+
+        .navbar-brand {
+            font-size: 25px;
+            font-weight: 800;
+            color: var(--primary) !important;
+            letter-spacing: -1px;
+        }
+
+        .brand-icon {
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            padding: 8px 11px;
+            margin-right: 8px;
+        }
+
+        .nav-link {
+            color: #55536b;
+            font-weight: 500;
+            margin: 0 8px;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .btn-main {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 23px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            background: var(--primary-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-main {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            padding: 10px 22px;
+            font-weight: 600;
+        }
+
+        .btn-outline-main:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(120deg, #f0edff, #fff4ef);
+            padding: 85px 0 75px;
+            overflow: hidden;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #e5dfff;
+            color: var(--primary);
+            border-radius: 30px;
+            padding: 9px 17px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+            max-width: 500px;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 370px;
+            object-fit: cover;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(67, 45, 140, 0.16);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 35px;
+            margin-top: 35px;
+        }
+
+        .hero-stats h4 {
+            font-size: 25px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .hero-stats small {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* SECTION */
+        .section-padding {
+            padding: 75px 0;
+        }
+
+        .section-heading {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* SEARCH */
+        .search-box {
+            background: white;
+            border: 1px solid #e9e5f5;
+            border-radius: 14px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(40, 30, 90, 0.04);
+        }
+
+        .search-box i {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            background: transparent;
+        }
+
+        /* CATEGORY FILTERS */
+        .filter-btn {
+            border: 1px solid #e9e5f5;
+            background: white;
+            color: #68657b;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* EVENT CARDS */
+        .event-card {
+            background: white;
+            border: 1px solid #eeeaf7;
+            border-radius: 18px;
+            overflow: hidden;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(40, 30, 90, 0.11);
+        }
+
+        .event-image-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-img {
+            width: 100%;
+            height: 215px;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .event-card:hover .event-img {
+            transform: scale(1.05);
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: white;
+            color: var(--primary);
+            border-radius: 8px;
+            padding: 7px 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .event-body {
+            padding: 22px;
+        }
+
+        .event-date {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .event-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .event-description {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+            min-height: 44px;
+        }
+
+        .event-info {
+            color: #77758c;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .event-info i {
+            color: var(--primary);
+            margin-right: 7px;
+        }
+
+        .event-footer {
+            border-top: 1px solid #f0edf7;
+            padding-top: 17px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .seats {
+            color: #5b9876;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .register-btn {
+            background: #eeeaff;
+            color: var(--primary);
+            border: none;
+            border-radius: 9px;
+            padding: 10px 15px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .register-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* WHY JOIN */
+        .benefit-section {
+            background: var(--light);
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 17px;
+            padding: 30px 25px;
+            height: 100%;
+            border: 1px solid #eeeaf7;
+            transition: 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h5 {
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .benefit-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        /* CTA */
+        .cta-box {
+            background: linear-gradient(120deg, #6c4cf1, #8e69f5);
+            border-radius: 25px;
+            padding: 55px 35px;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .cta-box p {
+            color: #e8e0ff;
+            font-size: 14px;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 10px;
+            padding: 13px 25px;
+            font-weight: 700;
+        }
+
+        .btn-white:hover {
+            background: #f0edff;
+            color: var(--primary-dark);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #17152d;
+            color: white;
+            padding: 45px 0 25px;
+        }
+
+        footer p {
+            color: #aaa7c0;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .footer-link {
+            color: #aaa7c0;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        /* MODAL */
+        .modal-content {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(120deg, #6c4cf1, #8e69f5);
+            color: white;
+            padding: 25px;
+            border: none;
+        }
+
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .modal-body {
+            padding: 28px;
+        }
+
+        .form-label {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 13px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 76, 241, 0.12);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 991px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero-img {
+                height: 300px;
+                margin-top: 35px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-padding {
+                padding: 55px 0;
+            }
+
+            .section-heading {
+                font-size: 27px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-stats {
+                gap: 22px;
+            }
+
+            .hero-stats h4 {
+                font-size: 21px;
+            }
+
+            .hero-img {
+                height: 230px;
+            }
+
+            .cta-box {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            <span class="brand-icon"><i class="bi bi-calendar-event"></i></span>
+            CampusVibe
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#events">Explore Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#benefits">Why Join?</a>
+                </li>
+            </ul>
+
+            <!-- Right Side Buttons -->
+            <div class="d-flex flex-wrap align-items-center gap-2">
+
+                <button class="btn btn-outline-main"
+                        onclick="showMyRegistrations()">
+                    My Events
+                </button>
+
+                <a href="#events" class="btn btn-main">
+                    Explore Now <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+
+                {% if session.get('user_id') %}
+                    <span class="fw-semibold text-dark">
+                        Hi, {{ session.get('user_name') }}!
+                    </span>
+
+                    <a href="{{ url_for('logout') }}"
+                       class="btn btn-outline-main">
+                        <i class="bi bi-box-arrow-right me-1"></i> Logout
+                    </a>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <span class="hero-badge">
+                    <i class="bi bi-stars me-2"></i>
+                    YOUR CAMPUS, YOUR EXPERIENCE
+                </span>
+
+                <h1>
+                    Make Every Campus Moment
+                    <span>Unforgettable.</span>
+                </h1>
+
+                <p>
+                    Discover exciting college events, connect with new people,
+                    explore your interests, and create memories that last a lifetime.
+                    Your next campus adventure starts here!
+                </p>
+
+                <div class="d-flex gap-3 flex-wrap mt-4">
+                    <a href="#events" class="btn btn-main">
+                        Explore Events <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+
+                    <button class="btn btn-outline-main"
+                            onclick="showMyRegistrations()">
+                        My Registrations
+                    </button>
+                </div>
+
+                <div class="hero-stats">
+                    <div>
+                        <h4>12+</h4>
+                        <small>Events</small>
+                    </div>
+                    <div>
+                        <h4>500+</h4>
+                        <small>Students</small>
+                    </div>
+                    <div>
+                        <h4>20+</h4>
+                        <small>Clubs</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <img
+                    class="hero-img"
+                    src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=85"
+                    alt="Students enjoying a college event">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- EVENTS SECTION -->
+<section class="section-padding" id="events">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <span class="hero-badge">DISCOVER YOUR NEXT EXPERIENCE</span>
+            <h2 class="section-heading mt-2">Upcoming Events</h2>
+            <p class="section-subtitle">
+                Find something exciting, register, and be part of the experience.
+            </p>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-7">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="searchInput"
+                           placeholder="Search events by name, category, or venue...">
+                </div>
+            </div>
+        </div>
+
+        <!-- FILTER BUTTONS -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+
+            <button class="filter-btn active" data-category="All">
+                All Events
+            </button>
+
+            <button class="filter-btn" data-category="Technical">
+                <i class="bi bi-laptop me-1"></i> Technical
+            </button>
+
+            <button class="filter-btn" data-category="Cultural">
+                <i class="bi bi-music-note-beamed me-1"></i> Cultural
+            </button>
+
+            <button class="filter-btn" data-category="Sports">
+                <i class="bi bi-trophy me-1"></i> Sports
+            </button>
+
+            <button class="filter-btn" data-category="Workshop">
+                <i class="bi bi-lightbulb me-1"></i> Workshop
+            </button>
+
+        </div>
+
+        <!-- EVENT CARDS -->
+        <div class="row g-4" id="eventContainer"></div>
+
+        <div class="text-center mt-5 d-none" id="noEvents">
+            <i class="bi bi-calendar-x display-4 text-secondary"></i>
+            <h5 class="mt-3">No events found</h5>
+            <p class="text-secondary">Try another search or category.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- WHY JOIN -->
+<section class="section-padding benefit-section" id="benefits">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <span class="hero-badge">THE CAMPUSVIBE EXPERIENCE</span>
+            <h2 class="section-heading mt-2">More Than Just Events</h2>
+            <p class="section-subtitle">
+                Make the most of your college life with experiences that matter.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-3">
+                <div class="benefit-card">
+                    <div class="benefit-icon"
+                         style="background:#eeeaff;color:#6c4cf1">
+                        <i class="bi bi-lightning-charge"></i>
+                    </div>
+                    <h5>Explore Your Interests</h5>
+                    <p>
+                        Discover technical, cultural, sports, and creative events
+                        that match your interests.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="benefit-card">
+                    <div class="benefit-icon"
+                         style="background:#fff0e9;color:#ff7a59">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <h5>Connect with People</h5>
+                    <p>
+                        Meet students, build friendships, and connect with people
+                        who share your passions.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="benefit-card">
+                    <div class="benefit-icon"
+                         style="background:#e8f8ef;color:#2e9c65">
+                        <i class="bi bi-award"></i>
+                    </div>
+                    <h5>Earn Certificates</h5>
+                    <p>
+                        Participate in events and celebrate your achievements
+                        with participation certificates.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="benefit-card">
+                    <div class="benefit-icon"
+                         style="background:#fff5d9;color:#e5a500">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <h5>Easy Registration</h5>
+                    <p>
+                        Find events, register in a few steps, and keep track
+                        of your registrations in one place.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CTA SECTION -->
+<section class="section-padding">
+    <div class="container">
+        <div class="cta-box">
+
+            <i class="bi bi-stars display-5"></i>
+
+            <h2 class="mt-3">Ready to Make Memories?</h2>
+
+            <p class="mt-3">
+                Your next favorite college experience is just one click away.
+            </p>
+
+            <a href="#events" class="btn btn-white mt-3">
+                Discover Events <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-5">
+                <h4 class="fw-bold">
+                    <i class="bi bi-calendar-event me-2"></i>CampusVibe
+                </h4>
+
+                <p class="mt-3">
+                    Your one-stop destination for discovering and registering
+                    for exciting college events. Make every campus moment count!
+                </p>
+            </div>
+
+            <div class="col-lg-3 col-6">
+                <h6 class="fw-bold mb-3">Quick Links</h6>
+                <div class="d-flex flex-column gap-3">
+                    <a href="#" class="footer-link">Home</a>
+                    <a href="#events" class="footer-link">Explore Events</a>
+                    <a href="#benefits" class="footer-link">Why Join?</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-6">
+                <h6 class="fw-bold mb-3">Contact</h6>
+                <p><i class="bi bi-envelope me-2"></i>campusvibe@example.com</p>
+                <p><i class="bi bi-geo-alt me-2"></i>College Campus</p>
+            </div>
+
+        </div>
+
+        <hr style="border-color:#39364f;margin:30px 0 20px;">
+
+        <div class="text-center">
+            <p class="mb-0">
+                © 2026 CampusVibe. Made for college life.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- REGISTRATION MODAL -->
+<div class="modal fade" id="registrationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div>
+                    <h5 class="modal-title fw-bold">Event Registration</h5>
+                    <small class="text-white-50" id="modalEventName"></small>
+                </div>
+
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <form id="registrationForm">
+
+                    <input type="hidden" id="selectedEvent">
+
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control"
+                               id="studentName" placeholder="Enter your full name"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control"
+                               id="studentEmail" placeholder="Enter your email"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Register Number</label>
+                        <input type="text" class="form-control"
+                               id="studentRegNo" placeholder="Enter your register number"
+                               required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Department</label>
+                        <select class="form-select" id="studentDepartment" required>
+                            <option value="">Select Department</option>
+                            <option>Computer Science Engineering</option>
+                            <option>Information Technology</option>
+                            <option>Electronics and Communication Engineering</option>
+                            <option>Electrical and Electronics Engineering</option>
+                            <option>Mechanical Engineering</option>
+                            <option>Civil Engineering</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-main w-100 mt-2">
+                        Confirm Registration
+                        <i class="bi bi-arrow-right ms-2"></i>
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- MY REGISTRATIONS MODAL -->
+<div class="modal fade" id="myEventsModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">My Registrations</h5>
+                <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body" id="myEventsList">
+                <p class="text-secondary text-center">
+                    You have not registered for any events yet.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- SUCCESS MODAL -->
+<div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center p-5">
+
+                <div class="display-1 text-success mb-3">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+
+                <h4 class="fw-bold">Registration Successful!</h4>
+
+                <p class="text-secondary mt-3" id="successMessage">
+                    You have registered successfully.
+                </p>
+
+                <button class="btn btn-main mt-3"
+                        data-bs-dismiss="modal">
+                    Done
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+<script>
+   
+    const isLoggedIn = {{ 'true' if session.get('user_id') else 'false' }};
+
+
+    const events = [
+        {
+            id: 1,
+            title: "TechNova 2026",
+            category: "Technical",
+            date: "October 10, 2026",
+            venue: "Main Auditorium",
+            description: "Explore innovation, coding challenges, and exciting technology competitions.",
+            image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+            seats: 120
+        },
+        {
+            id: 2,
+            title: "Cultural Fiesta",
+            category: "Cultural",
+            date: "October 15, 2026",
+            venue: "College Open Ground",
+            description: "Celebrate music, dance, creativity, and the spirit of campus life.",
+            image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=800&q=80",
+            seats: 200
+        },
+        {
+            id: 3,
+            title: "CodeSprint Hackathon",
+            category: "Technical",
+            date: "October 20, 2026",
+            venue: "Computer Lab",
+            description: "Build innovative solutions, solve problems, and showcase your coding skills.",
+            image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+            seats: 80
+        },
+        {
+            id: 4,
+            title: "Champions League",
+            category: "Sports",
+            date: "October 25, 2026",
+            venue: "College Sports Ground",
+            description: "Compete in exciting sports activities and cheer for your favorite teams.",
+            image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80",
+            seats: 150
+        },
+        {
+            id: 5,
+            title: "AI & Machine Learning Workshop",
+            category: "Workshop",
+            date: "November 2, 2026",
+            venue: "Seminar Hall",
+            description: "Discover artificial intelligence and learn practical machine learning concepts.",
+            image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+            seats: 60
+        },
+        {
+            id: 6,
+            title: "Photography & Art Fest",
+            category: "Cultural",
+            date: "November 8, 2026",
+            venue: "Arts Block",
+            description: "Showcase your creativity through photography, art, and visual storytelling.",
+            image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80",
+            seats: 100
+        }
+    ];
+
+
+    let selectedCategory = "All";
+
+    
+    let registrations = [];
+
+
+    async function loadRegistrations() {
+        try {
+            const response = await fetch("/api/registrations", {
+                method: "GET",
+                credentials: "same-origin"
+            });
+
+            
+            if (response.status === 401) {
+                registrations = [];
+                renderEvents();
+                return false;
+            }
+
+            if (!response.ok) {
+                throw new Error("Failed to load registrations");
+            }
+
+            registrations = await response.json();
+
+            renderEvents();
+            return true;
+
+        } catch (error) {
+            console.error("Error loading registrations:", error);
+            registrations = [];
+            renderEvents();
+            return false;
+        }
+    }
+
+
+    function renderEvents() {
+        const container = document.getElementById("eventContainer");
+
+        if (!container) return;
+
+        const searchInput = document.getElementById("searchInput");
+        const search = searchInput
+            ? searchInput.value.toLowerCase().trim()
+            : "";
+
+        const filteredEvents = events.filter(event => {
+            const matchesCategory =
+                selectedCategory === "All" ||
+                event.category === selectedCategory;
+
+            const matchesSearch =
+                event.title.toLowerCase().includes(search) ||
+                event.category.toLowerCase().includes(search) ||
+                event.venue.toLowerCase().includes(search);
+
+            return matchesCategory && matchesSearch;
+        });
+
+        container.innerHTML = "";
+
+        const noEvents = document.getElementById("noEvents");
+
+        if (noEvents) {
+            noEvents.classList.toggle(
+                "d-none",
+                filteredEvents.length > 0
+            );
+        }
+
+        filteredEvents.forEach(event => {
+
+            const alreadyRegistered = registrations.some(
+                r => Number(r.eventId) === event.id
+            );
+
+            const card = `
+                <div class="col-md-6 col-lg-4">
+                    <div class="event-card">
+
+                        <div class="event-image-wrap">
+                            <img src="${event.image}"
+                                 class="event-img"
+                                 alt="${event.title}"
+                                 loading="lazy">
+
+                            <span class="category-badge">
+                                ${event.category}
+                            </span>
+                        </div>
+
+                        <div class="event-body">
+
+                            <div class="event-date">
+                                <i class="bi bi-calendar3 me-2"></i>
+                                ${event.date}
+                            </div>
+
+                            <h5 class="event-title">
+                                ${event.title}
+                            </h5>
+
+                            <p class="event-description">
+                                ${event.description}
+                            </p>
+
+                            <div class="event-info">
+                                <i class="bi bi-geo-alt"></i>
+                                ${event.venue}
+                            </div>
+
+                            <div class="event-info">
+                                <i class="bi bi-people"></i>
+                                ${event.seats} seats available
+                            </div>
+
+                            <div class="event-footer">
+
+                                <span class="seats">
+                                    <i class="bi bi-check-circle-fill me-1"></i>
+                                    Open for registration
+                                </span>
+
+                                <button
+                                    class="register-btn"
+                                    onclick="openRegistration(${event.id})"
+                                    ${alreadyRegistered ? "disabled" : ""}>
+
+                                    ${alreadyRegistered
+                                        ? "Registered"
+                                        : "Register"}
+
+                                    <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            container.innerHTML += card;
+        });
+    }
+
+
+    document.querySelectorAll(".filter-btn").forEach(button => {
+        button.addEventListener("click", function () {
+
+            document.querySelectorAll(".filter-btn")
+                .forEach(btn => btn.classList.remove("active"));
+
+            this.classList.add("active");
+
+            selectedCategory = this.dataset.category;
+
+            renderEvents();
+        });
+    });
+
+
+    const searchInput = document.getElementById("searchInput");
+
+    if (searchInput) {
+        searchInput.addEventListener("input", renderEvents);
+    }
+
+    function openRegistration(eventId) {
+
+        // Redirect to login if the student is not logged in
+        if (!isLoggedIn) {
+            window.location.href = "/login";
+            return;
+        }
+
+        const event = events.find(e => e.id === eventId);
+
+        if (!event) return;
+
+        const alreadyRegistered = registrations.some(
+            r => Number(r.eventId) === eventId
+        );
+
+        if (alreadyRegistered) {
+            alert("You have already registered for this event.");
+            return;
+        }
+
+        document.getElementById("registrationForm").reset();
+
+        document.getElementById("selectedEvent").value = eventId;
+
+        document.getElementById("modalEventName").textContent =
+            event.title + " • " + event.date;
+
+        bootstrap.Modal.getOrCreateInstance(
+            document.getElementById("registrationModal")
+        ).show();
+    }
+
+
+    // =========================
+    // SUBMIT REGISTRATION FORM
+    // =========================
+    document.getElementById("registrationForm")
+        .addEventListener("submit", async function (e) {
+
+            e.preventDefault();
+
+            // Check login before submitting
+            if (!isLoggedIn) {
+                window.location.href = "/login";
+                return;
+            }
+
+            const eventId = Number(
+                document.getElementById("selectedEvent").value
+            );
+
+            const event = events.find(e => e.id === eventId);
+
+            if (!event) return;
+
+            if (registrations.some(
+                r => Number(r.eventId) === eventId
+            )) {
+                alert("You have already registered for this event.");
+                return;
+            }
+
+            const registration = {
+                eventId: eventId,
+                eventName: event.title,
+                name: document.getElementById("studentName").value.trim(),
+                email: document.getElementById("studentEmail").value.trim(),
+                registerNo: document.getElementById("studentRegNo").value.trim(),
+                department: document.getElementById("studentDepartment").value,
+                registeredAt: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch("/api/registrations", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "same-origin",
+                    body: JSON.stringify(registration)
+                });
+
+                // Redirect to login if session has expired
+                if (response.status === 401) {
+                    window.location.href = "/login";
+                    return;
+                }
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    alert(result.error || "Registration failed.");
+                    return;
+                }
+
+                // Refresh registrations from database
+                await loadRegistrations();
+
+                // Close registration modal
+                bootstrap.Modal.getOrCreateInstance(
+                    document.getElementById("registrationModal")
+                ).hide();
+
+                // Show success message
+                document.getElementById("successMessage").textContent =
+                    "You have successfully registered for " + event.title + "!";
+
+                bootstrap.Modal.getOrCreateInstance(
+                    document.getElementById("successModal")
+                ).show();
+
+            } catch (error) {
+                console.error("Registration error:", error);
+                alert("Could not connect to the server. Please try again.");
+            }
+        });
+
+
+    // =========================
+    // SHOW MY REGISTRATIONS
+    // =========================
+    async function showMyRegistrations() {
+
+        // Redirect to login if not logged in
+        if (!isLoggedIn) {
+            window.location.href = "/login";
+            return;
+        }
+
+        const loaded = await loadRegistrations();
+
+        if (!loaded) return;
+
+        const list = document.getElementById("myEventsList");
+
+        if (!list) return;
+
+        if (registrations.length === 0) {
+
+            list.innerHTML = `
+                <div class="text-center py-4">
+                    <i class="bi bi-calendar-x display-4 text-secondary"></i>
+
+                    <h6 class="mt-3">No registrations yet</h6>
+
+                    <p class="text-secondary small">
+                        Explore events and register for your favorites!
+                    </p>
+                </div>
+            `;
+
+        } else {
+
+            list.innerHTML = registrations.map(registration => {
+
+                const event = events.find(
+                    e => e.id === Number(registration.eventId)
+                );
+
+                return `
+                    <div class="border rounded-3 p-3 mb-3">
+
+                        <h6 class="fw-bold mb-2">
+                            ${registration.eventName || "Event"}
+                        </h6>
+
+                        <p class="small text-secondary mb-2">
+                            <i class="bi bi-person me-2"></i>
+                            ${registration.name}
+                        </p>
+
+                        <p class="small text-secondary mb-2">
+                            <i class="bi bi-envelope me-2"></i>
+                            ${registration.email}
+                        </p>
+
+                        <p class="small text-secondary mb-2">
+                            <i class="bi bi-calendar3 me-2"></i>
+                            ${event ? event.date : ""}
+                        </p>
+
+                        <span class="badge bg-success-subtle text-success">
+                            <i class="bi bi-check-circle me-1"></i>
+                            Registered
+                        </span>
+
+                        <button
+                            class="btn btn-sm btn-outline-danger float-end"
+                            onclick="cancelRegistration('${registration._id}')">
+
+                            Cancel
+                        </button>
+
+                    </div>
+                `;
+            }).join("");
+        }
+
+        bootstrap.Modal.getOrCreateInstance(
+            document.getElementById("myEventsModal")
+        ).show();
+    }
+
+
+    // =========================
+    // CANCEL REGISTRATION
+    // =========================
+    async function cancelRegistration(registrationId) {
+
+        if (!confirm("Are you sure you want to cancel this registration?")) {
+            return;
+        }
+
+        try {
+            const response = await fetch(
+                `/api/registrations/${registrationId}`,
+                {
+                    method: "DELETE",
+                    credentials: "same-origin"
+                }
+            );
+
+            // Redirect if login session has expired
+            if (response.status === 401) {
+                window.location.href = "/login";
+                return;
+            }
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                alert(result.error || "Unable to cancel registration.");
+                return;
+            }
+
+            alert("Registration cancelled successfully.");
+
+            // Refresh registrations from database
+            await loadRegistrations();
+
+            // Refresh the existing My Events modal
+            await showMyRegistrations();
+
+        } catch (error) {
+            console.error("Cancellation error:", error);
+            alert("Could not connect to the server. Please try again.");
+        }
+    }
+
+
+    // =========================
+    // INITIAL PAGE LOAD
+    // =========================
+    document.addEventListener("DOMContentLoaded", function () {
+        renderEvents();
+        loadRegistrations();
+    });
+
+</script>
+</body>
+</html>
