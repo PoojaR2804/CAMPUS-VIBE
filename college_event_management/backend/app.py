@@ -1,3 +1,4 @@
+import os
 
 from flask import (
     Flask, render_template, request, jsonify,
@@ -12,10 +13,15 @@ from functools import wraps
 app = Flask(__name__, template_folder="../frontend/templates")
 
 # Secret key for session management
-app.secret_key = "campusvibe_secret_key_2026"
+app.secret_key = os.getenv("SECRET_KEY")
 
-# MongoDB connection
-client = MongoClient("mongodb://localhost:27017/")
+# MongoDB Atlas connection
+MONGODB_URI = os.getenv("MONGODB_URI")
+
+client = MongoClient(
+    MONGODB_URI,
+    serverSelectionTimeoutMS=10000
+)
 
 # Database
 db = client["college_event_db"]
@@ -26,9 +32,6 @@ registrations_collection = db["registrations"]
 users_collection = db["users"]
 
 
-# =========================
-# LOGIN REQUIRED DECORATOR
-# =========================
 def login_required_api(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -42,10 +45,6 @@ def login_required_api(f):
 
     return decorated_function
 
-
-# =========================
-# WELCOME / LOGO PAGE
-# =========================
 @app.route("/")
 def welcome():
     if session.get("user_id"):
@@ -54,9 +53,6 @@ def welcome():
     return render_template("welcome.html")
 
 
-# =========================
-# HOME PAGE - LOGIN REQUIRED
-# =========================
 @app.route("/home")
 def home():
     if not session.get("user_id"):
@@ -64,22 +60,15 @@ def home():
 
     return render_template("index.html")
 
-
-# =========================
-# TEST MONGODB CONNECTION
-# =========================
 @app.route("/test-db")
 def test_db():
     try:
         client.admin.command("ping")
         return "MongoDB connected successfully!"
-    except Exception as e:
-        return f"MongoDB connection failed: {e}"
+    except Exception:
+        app.logger.exception("MongoDB connection failed")
+        return "MongoDB connection failed. Check Render logs.", 500
 
-
-# =========================
-# STUDENT SIGNUP
-# =========================
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
@@ -123,9 +112,6 @@ def signup():
     return render_template("signup.html")
 
 
-# =========================
-# STUDENT LOGIN
-# =========================
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -149,9 +135,6 @@ def login():
     return render_template("login.html")
 
 
-# =========================
-# STUDENT LOGOUT
-# =========================
 @app.route("/logout")
 def logout():
     session.clear()
@@ -159,10 +142,6 @@ def logout():
     return redirect(url_for("welcome"))
 
 
-# =========================
-# EVENT REGISTRATION
-# LOGIN REQUIRED
-# =========================
 @app.route("/api/registrations", methods=["POST"])
 @login_required_api
 def add_registration():
@@ -223,9 +202,6 @@ def add_registration():
         }), 500
 
 
-# =========================
-# GET LOGGED-IN STUDENT'S REGISTRATIONS
-# =========================
 @app.route("/api/registrations", methods=["GET"])
 @login_required_api
 def get_registrations():
@@ -282,8 +258,5 @@ def delete_registration(registration_id):
         }), 400
 
 
-# =========================
-# RUN APPLICATION
-# =========================
 if __name__ == "__main__":
     app.run(debug=True)
