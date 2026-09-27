@@ -1,3 +1,4 @@
 flask
-pymongo
+pymongo[srv]>=4.9.0
 gunicorn
+certifi
